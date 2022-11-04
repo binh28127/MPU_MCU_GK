@@ -99,7 +99,10 @@ int main(void)
   {
 	  if (isTimerUp(0)) {
 		  HAL_GPIO_TogglePin(GPIOA, 0x4);
-		  setTimer(0, 200);
+		  setTimer(0, 2000);
+	  }
+	  if (isButtonPressed(0)) {
+		  HAL_GPIO_WritePin(GPIOA, 0x4, GPIO_PIN_SET);
 	  }
 
 
@@ -240,6 +243,7 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	timerRun();
+	getKeyInput();
 }
 /* USER CODE END 4 */
 
