@@ -17,6 +17,7 @@
 
 int isButtonPressed(int button);
 int isButtonPressed3s(int button);
+int isButtonTimeOut(int button);
 void getKeyInput();
 
 #endif /* INC_BUTTON_READING_H_ */

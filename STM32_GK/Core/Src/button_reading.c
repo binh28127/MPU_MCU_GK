@@ -10,6 +10,7 @@
 int button_state[NO_OF_BUTTONS] = { 0, 0, 0 };
 int button_flag[NO_OF_BUTTONS] = { 0, 0, 0 };
 int button_flag_3s[NO_OF_BUTTONS] = { 0, 0, 0 };
+int button_flag_time_out[NO_OF_BUTTONS] = { 0, 0, 0 };
 GPIO_PinState key_reg[NO_OF_BUTTONS][4];
 int counterForKeyPress[NO_OF_BUTTONS];
 
@@ -29,12 +30,20 @@ int isButtonPressed3s(int button) {
 	else return 0;
 }
 
+int isButtonTimeOut(int button) {
+	return (button_flag_time_out[button] == 1);
+}
+
 void setTimerForButton3s(int button) {
 	counterForKeyPress[button] = timerForKeyPress3s / timerCycle;
 }
 
 void setTimerForButton1s(int button) {
 	counterForKeyPress[button] = timerForKeyPress1s / timerCycle;
+}
+
+void setTimerForTimeOut(int button) {
+	counterForKeyPress[button] = timerForTimeOut / timerCycle;
 }
 
 void fsmButtonProcessing(int button) {
@@ -47,6 +56,13 @@ void fsmButtonProcessing(int button) {
 				button_flag[button] = 1;
 				setTimerForButton3s(button);
 			}
+			else {
+				counterForKeyPress[button]--;
+				if (!counterForKeyPress[button]) {
+					button_flag_time_out[button] = 1;
+					setTimer(1, timerForCountAuto);
+				}
+			}
 			break;
 
 		case BUTTON_IS_PRESSED:
@@ -54,6 +70,7 @@ void fsmButtonProcessing(int button) {
 			if (key_reg[button][2] == NORMAL_STATE) {
 				key_reg[button][3] = NORMAL_STATE;
 				button_state[button] = BUTTON_IS_RELEASED;
+				setTimerForTimeOut(button);
 			}
 
 			// Press and hold button 3s - long press
@@ -72,6 +89,7 @@ void fsmButtonProcessing(int button) {
 			if (key_reg[button][2] == NORMAL_STATE) {
 				key_reg[button][3] = NORMAL_STATE;
 				button_state[button] = BUTTON_IS_RELEASED;
+				setTimerForTimeOut(button);
 			}
 
 			// Count 1s while long press

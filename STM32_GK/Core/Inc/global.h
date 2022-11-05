@@ -15,7 +15,8 @@
 
 // define for timer
 // Timer0 for LED blinking
-#define NO_OF_TIMERS		4
+// Timer1 for time out
+#define NO_OF_TIMERS		2
 
 // define for button
 #define NO_OF_BUTTONS		3
@@ -37,11 +38,14 @@
 #define COUNT_RESET			1
 #define COUNT_UP			2
 #define COUNT_DOWN			3
+#define COUNT_AUTO			4
 
 // global variables
 extern int timerCycle;
 extern int timerForKeyPress3s;
 extern int timerForKeyPress1s;
+extern int timerForTimeOut;
+extern int timerForCountAuto;
 
 extern int LED_blinking_time;
 
