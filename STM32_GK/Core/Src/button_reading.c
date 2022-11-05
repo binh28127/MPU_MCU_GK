@@ -54,8 +54,11 @@ void fsmButtonProcessing(int button) {
 				key_reg[button][3] = PRESSED_STATE;
 				button_state[button] = BUTTON_IS_PRESSED;
 				button_flag[button] = 1;
+				button_flag_time_out[button] = 0;
 				setTimerForButton3s(button);
 			}
+
+			// Count for time out
 			else {
 				counterForKeyPress[button]--;
 				if (!counterForKeyPress[button]) {
