@@ -15,5 +15,6 @@
 #define SEG_OFF				GPIO_PIN_SET
 
 void update7SEG();
+void updateBuffer();
 
 #endif /* INC_7SEG_DISPLAY_H_ */

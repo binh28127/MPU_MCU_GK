@@ -7,8 +7,7 @@
 
 #include "7seg_display.h"
 
-int index_seg = 0;
-int seg_buffer[NO_OF_7SEGS] = { 1, 2, 3, 4 };
+int seg_buffer = 0;
 
 void display7SEG(int num) {
 	switch (num) {
@@ -57,25 +56,10 @@ void display7SEG(int num) {
 	}
 }
 
-void update7SEG(int index){
-    switch (index){
-        case 0:
-            //Display the first 7SEG with led_buffer[0]
-            display7SEG(seg_buffer[0]);
-            break;
-        case 1:
-            //Display the second 7SEG with led_buffer[1]
-            display7SEG(seg_buffer[1]);
-            break;
-        case 2:
-            //Display the third 7SEG with led_buffer[2]
-            display7SEG(seg_buffer[2]);
-            break;
-        case 3:
-            //Display the forth 7SEG with led_buffer[3]
-            display7SEG(seg_buffer[3]);
-            break;
-        default:
-            break;
-    }
+void update7SEG(){
+	display7SEG(seg_buffer);
+}
+
+void updateBuffer() {
+	seg_buffer = counter;
 }

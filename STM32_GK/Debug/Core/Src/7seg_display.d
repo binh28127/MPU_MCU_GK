@@ -25,7 +25,7 @@ Core/Src/7seg_display.o: ../Core/Src/7seg_display.c \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
- ../Core/Inc/7seg_display.h
+ ../Core/Inc/7seg_display.h ../Core/Inc/LED_blinking.h
 
 ../Core/Inc/7seg_display.h:
 
@@ -86,3 +86,5 @@ Core/Src/7seg_display.o: ../Core/Src/7seg_display.c \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 
 ../Core/Inc/7seg_display.h:
+
+../Core/Inc/LED_blinking.h:

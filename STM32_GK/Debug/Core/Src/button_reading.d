@@ -1,7 +1,7 @@
 Core/Src/button_reading.o: ../Core/Src/button_reading.c \
  ../Core/Inc/button_reading.h ../Core/Inc/global.h \
  ../Core/Inc/software_timer.h ../Core/Inc/button_reading.h \
- ../Core/Inc/7seg_display.h ../Core/Inc/main.h \
+ ../Core/Inc/7seg_display.h ../Core/Inc/LED_blinking.h ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -36,6 +36,8 @@ Core/Src/button_reading.o: ../Core/Src/button_reading.c \
 ../Core/Inc/button_reading.h:
 
 ../Core/Inc/7seg_display.h:
+
+../Core/Inc/LED_blinking.h:
 
 ../Core/Inc/main.h:
 

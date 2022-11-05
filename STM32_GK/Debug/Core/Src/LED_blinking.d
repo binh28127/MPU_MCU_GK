@@ -1,5 +1,5 @@
-Core/Src/software_timer.o: ../Core/Src/software_timer.c \
- ../Core/Inc/software_timer.h ../Core/Inc/global.h \
+Core/Src/LED_blinking.o: ../Core/Src/LED_blinking.c \
+ ../Core/Inc/LED_blinking.h ../Core/Inc/global.h \
  ../Core/Inc/software_timer.h ../Core/Inc/button_reading.h \
  ../Core/Inc/main.h ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
@@ -27,7 +27,7 @@ Core/Src/software_timer.o: ../Core/Src/software_timer.c \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Core/Inc/7seg_display.h ../Core/Inc/LED_blinking.h
 
-../Core/Inc/software_timer.h:
+../Core/Inc/LED_blinking.h:
 
 ../Core/Inc/global.h:
 

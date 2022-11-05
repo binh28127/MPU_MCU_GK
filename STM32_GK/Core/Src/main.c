@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "global.h"
+#include "fsm_simple_buttons.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -94,14 +95,12 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer(0, 200);
-  int idx = 0;
+  setTimer(0, 1000);
   while (1)
   {
-	  if (isButtonPressed(0)) {
-		  update7SEG((idx++) % 4);
-	  }
-	  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SEG_DISABLE);
+	  LEDBlinking();
+	  update7SEG();
+	  fsmSimpleButtonsRun();
 
 
     /* USER CODE END WHILE */
@@ -205,21 +204,18 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2|EN0_Pin|EN1_Pin|EN2_Pin
-                          |EN3_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3
                           |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : PA2 EN0_Pin EN1_Pin EN2_Pin
-                           EN3_Pin */
-  GPIO_InitStruct.Pin = GPIO_PIN_2|EN0_Pin|EN1_Pin|EN2_Pin
-                          |EN3_Pin;
+  /*Configure GPIO pin : LED_RED_Pin */
+  GPIO_InitStruct.Pin = LED_RED_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_GPIO_Init(LED_RED_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PB0 PB1 PB2 PB3
                            PB4 PB5 PB6 */
@@ -230,8 +226,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : BUTTON_1_Pin BUTTON_2_Pin BUTTON_3_Pin */
-  GPIO_InitStruct.Pin = BUTTON_1_Pin|BUTTON_2_Pin|BUTTON_3_Pin;
+  /*Configure GPIO pins : BUTTON_RESET_Pin BUTTON_INC_Pin BUTTON_DEC_Pin */
+  GPIO_InitStruct.Pin = BUTTON_RESET_Pin|BUTTON_INC_Pin|BUTTON_DEC_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
