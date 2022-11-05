@@ -120,6 +120,10 @@ void fsmSimpleButtonsRun() {
 
 			//Press button RESET
 			if (isButtonPressed(BUTTON_RESET)) {
+				state = COUNT_RESET;
+
+				// Set counter to 0
+				counter = 0;
 				break;
 			}
 
