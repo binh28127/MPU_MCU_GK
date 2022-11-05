@@ -16,13 +16,18 @@ void fsmSimpleButtonsRun() {
 		case COUNT_RESET:
 			updateBuffer();
 
+			// Press button RESET
+			if (isButtonPressed(BUTTON_RESET)) {
+				break;
+			}
+
 			// Press button INC
 			if (isButtonPressed(BUTTON_INC)) {
 				state = COUNT_UP;
 
 				// Increase 1 unit
 				counter++;
-				if (counter >= 10) counter = 0;
+				if (counter > 9) counter = 0;
 			}
 
 			// Press button DEC
@@ -31,7 +36,7 @@ void fsmSimpleButtonsRun() {
 
 				// Decrease 1 unit
 				counter--;
-				if (counter <= 0) counter = 9;
+				if (counter < 0) counter = 9;
 			}
 
 			break;
@@ -48,10 +53,10 @@ void fsmSimpleButtonsRun() {
 			}
 
 			// Press button INC
-			if (isButtonPressed(BUTTON_INC)) {
+			if (isButtonPressed(BUTTON_INC) || isButtonPressed3s(BUTTON_INC)) {
 				// Increase 1 unit
 				counter++;
-				if (counter >= 10) counter = 0;
+				if (counter > 9) counter = 0;
 			}
 
 			// Press button DEC
@@ -60,7 +65,7 @@ void fsmSimpleButtonsRun() {
 
 				// Decrease 1 unit
 				counter--;
-				if (counter <= 0) counter = 9;
+				if (counter < 0) counter = 9;
 			}
 
 			break;
@@ -82,13 +87,14 @@ void fsmSimpleButtonsRun() {
 
 				// Increase 1 unit
 				counter++;
-				if (counter >= 10) counter = 0;
+				if (counter > 9) counter = 0;
 			}
 
-			if (isButtonPressed(BUTTON_DEC)) {
+			// Press button DEC
+			if (isButtonPressed(BUTTON_DEC) || isButtonPressed3s(BUTTON_DEC)) {
 				// Decrease 1 unit
 				counter--;
-				if (counter <= 0) counter = 9;
+				if (counter < 0) counter = 9;
 			}
 
 			break;

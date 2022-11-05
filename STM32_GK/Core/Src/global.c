@@ -8,7 +8,8 @@
 #include "global.h"
 
 int timerCycle = 10;
-int timerForKeyPress = 1000;
+int timerForKeyPress3s = 3000;
+int timerForKeyPress1s = 1000;
 
 int LED_blinking_time = 1000;
 

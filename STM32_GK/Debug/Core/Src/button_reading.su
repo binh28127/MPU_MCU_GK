@@ -1,3 +1,6 @@
-button_reading.c:14:5:isButtonPressed	16	static
-button_reading.c:22:6:fsmButtonProcessing	16	static
-button_reading.c:46:6:getKeyInput	16	static
+button_reading.c:16:5:isButtonPressed	16	static
+button_reading.c:24:5:isButtonPressed3s	16	static
+button_reading.c:32:6:setTimerForButton3s	16	static
+button_reading.c:36:6:setTimerForButton1s	16	static
+button_reading.c:40:6:fsmButtonProcessing	16	static
+button_reading.c:91:6:getKeyInput	16	static

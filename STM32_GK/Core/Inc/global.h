@@ -40,7 +40,8 @@
 
 // global variables
 extern int timerCycle;
-extern int timerForKeyPress;
+extern int timerForKeyPress3s;
+extern int timerForKeyPress1s;
 
 extern int LED_blinking_time;
 
